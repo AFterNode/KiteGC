@@ -127,7 +127,8 @@ public class VapeClickGui extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         FontManager.F18.drawStringWithShadow(Client.name + Client.version, 5, 5, new Color(255, 255, 255).hashCode());
-        FontManager.F18.drawStringWithShadow("Made by AFterNode, VapeLite based", 5, 17, new Color(255, 255, 255).hashCode());
+        FontManager.F18.drawStringWithShadow("Made by AFterNode, VapuLite based", 5, 17, new Color(255, 255, 255).hashCode());
+        FontManager.F18.drawStringWithShadow("GNU GPL v3 Opened Source", 5, 29, new Color(255, 255, 255).hashCode());
         super.drawScreen(mouseX, mouseY, partialTicks);
         ScaledResolution sResolution = new ScaledResolution(mc);
         ScaledResolution sr = new ScaledResolution(mc);
