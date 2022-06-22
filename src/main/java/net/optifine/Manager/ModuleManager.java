@@ -2,6 +2,7 @@ package net.optifine.Manager;
 
 import net.optifine.Modules.blatant.*;
 import net.optifine.Modules.movement.*;
+import net.optifine.Modules.other.Hitokoto;
 import net.optifine.Modules.other.InvManager;
 import net.optifine.Modules.other.Tracers;
 import net.optifine.Modules.player.*;
@@ -91,5 +92,6 @@ public class ModuleManager {
         Modules.add(new AutoPot());
         Modules.add(new NameTags());
         Modules.add(new Spammer());
+        Modules.add(new Hitokoto());
     }
 }
