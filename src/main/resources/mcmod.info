@@ -1,0 +1,16 @@
+[
+{
+  "modid": "kite",
+  "name": "KiteGC",
+  "description": "KiteGhostClient for HVH, VapuLite based",
+  "version": "0.2.0",
+  "mcversion": "${mcversion}",
+  "url": "https://afternode.cn/",
+  "updateUrl": "",
+  "authorList": ["VapuTeam", "AFterNode"],
+  "credits": "Medit_4 SuperSkidder LoRyu",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
