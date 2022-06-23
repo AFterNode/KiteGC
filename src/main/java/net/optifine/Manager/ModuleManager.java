@@ -93,5 +93,6 @@ public class ModuleManager {
         Modules.add(new NameTags());
         Modules.add(new Spammer());
         Modules.add(new Hitokoto());
+        Modules.add(new AutoCNM());
     }
 }
