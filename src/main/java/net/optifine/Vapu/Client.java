@@ -6,6 +6,7 @@ import net.optifine.Command.*;
 import net.optifine.Manager.FriendManager;
 import net.optifine.Modules.Module;
 import net.optifine.Manager.ModuleManager;
+import net.optifine.Utils.utils.AFnVerChk;
 import net.optifine.Utils.utils.Helper;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -72,6 +73,7 @@ public class Client {
         FriendManager.init();
 
         Helper.sendMessage("Kite 注入完成，版本：" + version);
+        AFnVerChk.go();
     }
 
     public static boolean nullCheck() {

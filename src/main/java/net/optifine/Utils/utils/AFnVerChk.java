@@ -11,4 +11,9 @@ public class AFnVerChk extends Thread{
             Helper.sendMessage("前往Github了解更多信息：https://github.com/AFterNode/KiteGC");
         }
     }
+
+    public static void go() {
+        AFnVerChk thread = new AFnVerChk();
+        thread.start();
+    }
 }
