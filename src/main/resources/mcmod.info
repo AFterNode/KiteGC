@@ -3,7 +3,7 @@
   "modid": "kite",
   "name": "KiteGC",
   "description": "KiteGhostClient for HVH, VapuLite based",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "mcversion": "${mcversion}",
   "url": "https://afternode.cn/",
   "updateUrl": "",
