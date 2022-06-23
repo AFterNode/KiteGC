@@ -24,7 +24,6 @@ public class OptifineRenderer {
                     }
                     Class<?> clazz = classLoader.loadClass("net.optifine.Vapu.Client");
                     clazz.newInstance();
-                    Helper.sendMessage("Kite is ready");
                     break;
                 }
             }

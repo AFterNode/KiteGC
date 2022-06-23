@@ -68,8 +68,7 @@ public class Lune extends GuiScreen {
     public static int dark_select = new Color(77, 82, 93).getRGB();
     public static int dark_unselect = new Color(57, 62, 73).getRGB();
 
-    public static int rgb = false ? new Color(50, 50, 50).getRGB()
-            : new Color(250, 250, 250).getRGB();
+    public static int rgb = new Color(250, 250, 250).getRGB();
 
     public TranslateUtil translate;
 
@@ -118,8 +117,8 @@ public class Lune extends GuiScreen {
 
         translate.interpolate(this.width, this.height, 6);
 
-        int var4 = this.windowX;
-        int var5 = this.windowY;
+        int var4 = windowX;
+        int var5 = windowY;
         double xmod = this.width - (translate.getX());
         double ymod = this.height - (translate.getY());
         GlStateManager.translate(0.5 * xmod, 0, 0);
@@ -397,7 +396,7 @@ public class Lune extends GuiScreen {
                     }
                     RenderUtil.drawRect(windowX + windowWeight - 15 - 67, valueRealY, windowX + windowWeight - 15,
                             valueRealY + 2, color_unselect);
-                    float render = (float) (67.0F
+                    float render = (67.0F
                             * (((Number) v.getValue()).floatValue() - ((Numbers) v).getMinimum().floatValue())
                             / (((Numbers) v).getMaximum().floatValue() - ((Numbers) v).getMinimum().floatValue()));
 

@@ -70,12 +70,13 @@ public class Client {
         CommandInit();
         ConfigManager.init();
         FriendManager.init();
+
+        Helper.sendMessage("Kite 注入完成，版本：" + version);
     }
 
     public static boolean nullCheck() {
         return mc.thePlayer == null || mc.theWorld == null;
     }
-
 
 
     private void CommandInit() {
