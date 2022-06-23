@@ -38,10 +38,4 @@ public class Spammer extends Module {
             thread = null;
         }
     }
-
-    @SubscribeEvent
-    public void keyInput(InputEvent.KeyInputEvent event) {
-        if (!this.state) return;
-        mc.thePlayer.sendChatMessage(content);
-    }
 }

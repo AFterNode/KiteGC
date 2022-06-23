@@ -13,7 +13,7 @@ public class AutoCNM extends Module {
     private AutoCNMThread th;
     public static final HashMap<Enum, Integer> DelayMap = new HashMap<>();
     public static final HashMap<Enum, String[]> SentenceMap = new HashMap<>();
-
+    public static boolean status;
 
     private Mode<Enum> mode = new Mode<>("Mode", "mode", (Enum[]) Sentences.values(), (Enum) Sentences.Normal);
     private Mode<Enum> delay = new Mode<>("Delay", "delay", Delay.values(), Delay.Normal);
@@ -45,12 +45,12 @@ public class AutoCNM extends Module {
     public void enable(){
         th = AutoCNMThread.go(DelayMap.get(delay.getValue()),
                 SentenceMap.get(mode.getValue()));
+        status = this.state;
     }
 
     @Override
     public void disable() {
-        th.interrupt();
-        th = null;
+        status = this.state;
     }
 }
 
@@ -66,6 +66,7 @@ class AutoCNMThread extends Thread {
     public void run() {
         while (true) {
             try {
+                if (!AutoCNM.status) break;
                 Random r = new Random();
                 AutoCNM.mc.thePlayer.sendChatMessage(sentences[r.nextInt(sentences.length)]);
                 TimeUnit.SECONDS.sleep(delay);
