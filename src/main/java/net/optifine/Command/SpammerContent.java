@@ -3,12 +3,14 @@ package net.optifine.Command;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.optifine.Manager.ModuleManager;
 import net.optifine.Modules.Module;
 import net.optifine.Modules.blatant.Spammer;
 import net.optifine.Modules.other.NoCommand;
 import net.optifine.Utils.Helper;
+import org.w3c.dom.Entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.List;
 public class SpammerContent implements ICommand {
     @Override
     public String getCommandName() {
-        return "spammer-content";
+        return "spam";
     }
 
     @Override
@@ -44,7 +46,7 @@ public class SpammerContent implements ICommand {
 
     @Override
     public boolean canCommandSenderUseCommand(ICommandSender iCommandSender) {
-        return false;
+        return iCommandSender.getCommandSenderEntity() instanceof EntityPlayer;
     }
 
     @Override
