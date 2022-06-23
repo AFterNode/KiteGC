@@ -13,6 +13,12 @@ public class ConfigManager {
         Client.instance.getClass();
     }
 
+    public enum slot {
+        Default,
+        Slot1,
+        Slot2
+    }
+
     public static File getConfigFile(final String name) {
         final File file = new File(ConfigManager.dir, String.format("%s.txt", name));
         if (!file.exists()) {

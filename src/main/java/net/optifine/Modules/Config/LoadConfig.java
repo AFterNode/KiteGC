@@ -17,13 +17,19 @@ import java.util.List;
 import static org.lwjgl.input.Keyboard.KEY_NONE;
 
 public class LoadConfig extends Module {
+    private Mode<Enum> slot = new Mode<>("Slot", "Slot", ConfigManager.slot.values(), ConfigManager.slot.Default);
+
     public LoadConfig() {
         super("LoadConfig", KEY_NONE, ModuleType.Config,"Load your configs");
         Chinese="加载配置";
         NoToggle=true;
+
+        addValues(slot);
     }
 
     public void enable() {
+        Client.config = slot.getValue().name();
+
         List<String> binds = ConfigManager.read(Client.config+"-binds.cfg");
         for (String v : binds) {
             String name = v.split(":")[0];

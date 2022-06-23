@@ -2,6 +2,7 @@ package net.optifine.Modules.Config;
 
 import net.optifine.Manager.ConfigManager;
 import net.optifine.Manager.ModuleManager;
+import net.optifine.Values.Mode;
 import net.optifine.Vapu.Client;
 import net.optifine.Modules.ModuleType;
 import net.optifine.Modules.Module;
@@ -15,13 +16,19 @@ import java.util.Iterator;
 import static org.lwjgl.input.Keyboard.KEY_NONE;
 
 public class SaveConfig extends Module {
+    private Mode<Enum> slot = new Mode<>("Slot", "Slot", ConfigManager.slot.values(), ConfigManager.slot.Default);
+
     public SaveConfig() {
         super("SaveConfig", KEY_NONE, ModuleType.Config,"Save your module setting (config)");
         Chinese="保存配置";
         NoToggle=true;
+
+        addValues(slot);
     }
 
     public void enable() {
+        Client.config = slot.getValue().name();
+
         String values = "";
         for (Module m : ModuleManager.getModules()) {
             for (Value v : m.getValues()) {
