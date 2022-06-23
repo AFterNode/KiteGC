@@ -1,5 +1,7 @@
 package net.optifine.Modules.world;
 
+import net.minecraft.init.Items;
+import net.minecraft.util.WeightedRandom;
 import net.optifine.Modules.ModuleType;
 import net.optifine.Modules.Module;
 import net.optifine.Modules.combat.AntiBot;
@@ -14,6 +16,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
+import scala.tools.cmd.gen.AnyValReps;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -28,10 +31,11 @@ public class MurderMystery extends Module {
 
     private Option<Boolean> Murder = new Option<Boolean>("Tell Everyone Murder","Tell Everyone Murder", false);
     private Option<Boolean> Bow= new Option<Boolean>("Tell Everyone Bow","Tell Everyone Bow", false);
+    private Option<Boolean> Hyt = new Option<>("[BETA] HytExtension", "hytExtension", false);
 
     public MurderMystery() {
         super("MurderMystery", Keyboard.KEY_NONE, ModuleType.World,"Detection Murders in Murder game");
-        this.addValues(this.Murder,this.Bow);
+        this.addValues(this.Murder,this.Bow,Hyt);
         Chinese="杀手检查";
     }
 
@@ -55,18 +59,20 @@ public class MurderMystery extends Module {
                                 if (!MurderMystery.m.contains(en)) {
                                     MurderMystery.m.add(en);
                                         MurderMystery.mc.thePlayer.playSound("note.pling", 1.0f, 1.0f);
-                                    Helper.sendMessage(en.getName() + " is the murderer!");
+                                    Helper.sendMessage(en.getName() + " 手中检测到武器");
                                     if(this.Murder.getValue()){
-                                        mc.thePlayer.sendChatMessage(en.getName() + " is the murderer!");
+                                        mc.thePlayer.sendChatMessage(en.getName() + " 是狼");
                                     }
                                 }
                             }
                             else if (i instanceof ItemBow && !MurderMystery.bw.contains(en)) {
                                 MurderMystery.bw.add(en);
-                                Helper.sendMessage("[WARNING]"+en.getName()+" have bow! he maybe will kill you.");
+                                Helper.sendMessage("[WARNING]" + en.getName() + " have bow! he maybe will kill you.");
                                 if(this.Bow.getValue()){
                                     mc.thePlayer.sendChatMessage(en.getName() + " have bow.");
                                 }
+                            } else if (i == Items.blaze_rod && !MurderMystery.bw.contains(en)) {
+                                Helper.sendMessage("[WARNING] " + en.getName() + " 是预言家");
                             }
                         }
                         int rgb = Color.green.getRGB();
