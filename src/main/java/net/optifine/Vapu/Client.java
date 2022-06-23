@@ -28,7 +28,7 @@ public class Client {
     // 调试时可以启用，注入成功会修改标题
 
     public static String name = "Kite";
-    public static String real_name = "GiteGC";
+    public static String real_name = "KiteGC";
     public static String version = "1.0.0";
     public static String config = "default";
 
