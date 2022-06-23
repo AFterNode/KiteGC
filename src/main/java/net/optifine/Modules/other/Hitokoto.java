@@ -19,15 +19,7 @@ public class Hitokoto extends Module {
 
     @Override
     public void enable(){
-        String h = net.optifine.Utils.Hitokoto.get("a");
-        if (Client.DebugMode) {
-            Helper.sendMessage(h);
-        }
-        if (h.equals("Failed")) return;
-        Map hashMap = net.optifine.Utils.Hitokoto.parse(h);
-
-        mc.thePlayer.sendChatMessage((String) hashMap.get("hitokoto") + ">>Kite Hitokoto<<");
-        mc.thePlayer.sendChatMessage("来自：" + (String) hashMap.get("from") + ">>Kite Hitokoto<<");
+        net.optifine.Utils.Hitokoto.go();
         state = false;
     }
 }
