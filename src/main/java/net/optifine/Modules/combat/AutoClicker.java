@@ -4,6 +4,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.optifine.Modules.ModuleType;
 import net.optifine.Modules.Module;
+import net.optifine.Modules.player.AutoCNM;
 import net.optifine.Utils.TimerUtil;
 import net.optifine.Values.Numbers;
 import net.minecraft.client.Minecraft;
@@ -13,13 +14,17 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.optifine.Values.Option;
 import org.lwjgl.input.Keyboard;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class AutoClicker extends Module {
     private final TimerUtil timer = new TimerUtil();
     private Numbers<Double> cps = new Numbers<Double>("CPS", "Cps",5.0, 1.0, 20.0,1.0);
     private Option<Boolean> autoblock = new Option<Boolean>("AutoBlock","AutoBlock", false);
     public boolean doBlock = true;
+
     public AutoClicker() {
         super("AutoClicker", Keyboard.KEY_K, ModuleType.Combat,"auto Attack when you hold the attack button");
         this.addValues(this.cps,this.autoblock);
