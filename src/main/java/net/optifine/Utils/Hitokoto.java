@@ -83,8 +83,8 @@ public class Hitokoto extends Thread{
         if (h.equals("Failed")) return;
         Map hashMap = net.optifine.Utils.Hitokoto.parse(h);
 
-        net.optifine.Modules.other.Hitokoto.mc.thePlayer.sendChatMessage((String) hashMap.get("hitokoto") + ">>Kite Hitokoto<<");
-        net.optifine.Modules.other.Hitokoto.mc.thePlayer.sendChatMessage("来自：" + (String) hashMap.get("from") + ">>Kite Hitokoto<<");
+        net.optifine.Modules.other.Hitokoto.mc.thePlayer.sendChatMessage((String) hashMap.get("hitokoto")
+                + " | 来自：" + hashMap.get("from") + ">>Kite Hitokoto<<");
     }
 
     public static void go(){
