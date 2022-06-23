@@ -3,6 +3,7 @@ package net.optifine.Modules.player;
 import net.optifine.Modules.Module;
 import net.optifine.Modules.ModuleType;
 import net.optifine.Values.Mode;
+import net.optifine.Values.Numbers;
 import org.lwjgl.input.Keyboard;
 
 import java.util.HashMap;
@@ -11,21 +12,14 @@ import java.util.concurrent.TimeUnit;
 
 public class AutoCNM extends Module {
     private AutoCNMThread th;
-    public static final HashMap<Enum, Integer> DelayMap = new HashMap<>();
     public static final HashMap<Enum, String[]> SentenceMap = new HashMap<>();
     public static boolean status;
 
-    private Mode<Enum> mode = new Mode<>("Mode", "mode", (Enum[]) Sentences.values(), (Enum) Sentences.Normal);
-    private Mode<Enum> delay = new Mode<>("Delay", "delay", Delay.values(), Delay.Normal);
+    private Mode<Enum> mode = new Mode<>("Mode", "mode", Sentences.values(), Sentences.Normal);
+    private Numbers<Double> delay = new Numbers<>("Delay", "Delay", 5.0, 3.0, 20.0, 5.0);
 
     enum Sentences{
         Normal
-    }
-
-    enum Delay {
-        Slow,
-        Normal,
-        Fast,
     }
 
     public AutoCNM() {
@@ -34,16 +28,12 @@ public class AutoCNM extends Module {
 
         SentenceMap.put(Sentences.Normal, LTap.LMessages);
         this.addValues(mode);
-
-        DelayMap.put(Delay.Slow, 7);
-        DelayMap.put(Delay.Normal, 4);
-        DelayMap.put(Delay.Fast, 1);
         this.addValues(delay);
     }
 
     @Override
     public void enable(){
-        th = AutoCNMThread.go(DelayMap.get(delay.getValue()),
+        th = AutoCNMThread.go(delay.getValue(),
                 SentenceMap.get(mode.getValue()));
         status = this.state;
     }
@@ -55,21 +45,22 @@ public class AutoCNM extends Module {
 }
 
 class AutoCNMThread extends Thread {
-    private final int delay;
+    private final double delay;
     private final String[] sentences;
 
-    AutoCNMThread(int d, String[] s) {
+    AutoCNMThread(double d, String[] s) {
         delay = d;
         sentences = s;
     }
 
     public void run() {
         while (true) {
+            int tmp_delay = new Double(delay).intValue() * 1000;
             try {
                 if (!AutoCNM.status) break;
                 Random r = new Random();
                 AutoCNM.mc.thePlayer.sendChatMessage(sentences[r.nextInt(sentences.length)]);
-                TimeUnit.SECONDS.sleep(delay);
+                TimeUnit.MILLISECONDS.sleep(tmp_delay);
             } catch (Exception e) {
                 System.out.println("[Kite] Exception occurred at AutoCNM: " + e.getMessage());
                 e.printStackTrace();
@@ -77,7 +68,7 @@ class AutoCNMThread extends Thread {
         }
     }
 
-    public static AutoCNMThread go(int delay, String[] sentences) {
+    public static AutoCNMThread go(double delay, String[] sentences) {
         AutoCNMThread thread = new AutoCNMThread(delay, sentences);
         thread.start();
         return thread;
