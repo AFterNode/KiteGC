@@ -23,7 +23,7 @@ public class NoFall extends Module {
     private boolean handling;
     public NoFall() {
         super("AutoMLG", Keyboard.KEY_NONE, ModuleType.World,"Auto use bukkit when you fall");
-        Chinese="无摔落";
+        Chinese="自动落地水";
     }
 
     @SubscribeEvent
