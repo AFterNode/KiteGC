@@ -1,10 +1,7 @@
 package net.optifine.Utils;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import net.optifine.Vapu.Client;
-import scala.util.parsing.json.JSONObject;
 
 import java.io.*;
 import java.net.URL;
@@ -16,7 +13,7 @@ import java.util.Map;
 public class Hitokoto extends Thread{
     public static String get(String category) {
         try {
-            return httpGet("https://v1.hitokoto.cn/", "c=a");
+            return httpGet("https://v1.hitokoto.cn/?c=a", "");
         } catch (Exception e) {
             Helper.sendMessage("Hitokoto >> Failed");
             return "Failed";
@@ -83,7 +80,7 @@ public class Hitokoto extends Thread{
         if (h.equals("Failed")) return;
         Map hashMap = net.optifine.Utils.Hitokoto.parse(h);
 
-        net.optifine.Modules.other.Hitokoto.mc.thePlayer.sendChatMessage((String) hashMap.get("hitokoto")
+        net.optifine.Modules.message.Hitokoto.mc.thePlayer.sendChatMessage((String) hashMap.get("hitokoto")
                 + " | 来自：" + hashMap.get("from") + ">>Kite Hitokoto<<");
     }
 
