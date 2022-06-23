@@ -11,6 +11,7 @@ public enum ModuleType{
     Player("Player", "玩家类"),
     World("World", "世界类"),
     Other("Other", "其他类"),
+    Message("Message", "消息发送器"),
     Config("Global", "全局设置");
 
     private final String name;

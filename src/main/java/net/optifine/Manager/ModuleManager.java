@@ -2,8 +2,7 @@ package net.optifine.Manager;
 
 import net.optifine.Modules.blatant.*;
 import net.optifine.Modules.movement.*;
-import net.optifine.Modules.other.Hitokoto;
-import net.optifine.Modules.other.InvManager;
+import net.optifine.Modules.message.Hitokoto;
 import net.optifine.Modules.other.Tracers;
 import net.optifine.Modules.player.*;
 import net.optifine.Modules.ModuleType;
@@ -17,7 +16,6 @@ import net.optifine.Modules.other.NoCommand;
 import net.optifine.Modules.render.*;
 import net.optifine.Modules.world.*;
 
-import javax.naming.Name;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
