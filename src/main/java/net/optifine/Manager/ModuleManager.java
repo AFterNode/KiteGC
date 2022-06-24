@@ -3,6 +3,7 @@ package net.optifine.Manager;
 import net.optifine.Modules.blatant.*;
 import net.optifine.Modules.movement.*;
 import net.optifine.Modules.message.Hitokoto;
+import net.optifine.Modules.other.AntiVanish;
 import net.optifine.Modules.other.Tracers;
 import net.optifine.Modules.player.*;
 import net.optifine.Modules.ModuleType;
@@ -92,5 +93,6 @@ public class ModuleManager {
         Modules.add(new Spammer());
         Modules.add(new Hitokoto());
         Modules.add(new AutoCNM());
+        Modules.add(new AntiVanish());
     }
 }
