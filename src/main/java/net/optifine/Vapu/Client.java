@@ -73,7 +73,6 @@ public class Client {
         FriendManager.init();
 
         Helper.sendMessage("Kite 注入完成，版本：" + version);
-        AFnVerChk.go();
     }
 
     public static boolean nullCheck() {
