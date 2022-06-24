@@ -4,6 +4,7 @@ import net.optifine.Modules.Module;
 import net.optifine.Modules.ModuleType;
 import net.optifine.Values.Mode;
 import net.optifine.Values.Numbers;
+import net.optifine.Values.Option;
 import org.lwjgl.input.Keyboard;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class AutoCNM extends Module {
     private AutoCNMThread th;
     public static final HashMap<Enum, String[]> SentenceMap = new HashMap<>();
     public static boolean status;
+    public static Option<Boolean> HytPublic = new Option<>("HytPublic", "HytPublic", false);
 
     private Mode<Enum> mode = new Mode<>("Mode", "mode", Sentences.values(), Sentences.Normal);
     private Numbers<Double> delay = new Numbers<>("Delay", "Delay", 5.0, 3.0, 20.0, 5.0);
@@ -29,6 +31,7 @@ public class AutoCNM extends Module {
         SentenceMap.put(Sentences.Normal, LTap.LMessages);
         this.addValues(mode);
         this.addValues(delay);
+        this.addValues(HytPublic);
     }
 
     @Override
@@ -58,8 +61,11 @@ class AutoCNMThread extends Thread {
             int tmp_delay = new Double(delay).intValue() * 1000;
             try {
                 if (!AutoCNM.status) break;
+                StringBuilder builder = new StringBuilder();
+                if (AutoCNM.HytPublic.getValue()) builder.append("@");
                 Random r = new Random();
-                AutoCNM.mc.thePlayer.sendChatMessage(sentences[r.nextInt(sentences.length)]);
+                builder.append(sentences[r.nextInt(sentences.length)]);
+                AutoCNM.mc.thePlayer.sendChatMessage(builder.toString());
                 TimeUnit.MILLISECONDS.sleep(tmp_delay);
             } catch (Exception e) {
                 System.out.println("[Kite] Exception occurred at AutoCNM: " + e.getMessage());

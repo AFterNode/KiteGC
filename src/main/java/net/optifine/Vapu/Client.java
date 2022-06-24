@@ -30,7 +30,7 @@ public class Client {
 
     public static String name = "Kite";
     public static String real_name = "KiteGC";
-    public static String version = "1.0.0";
+    public static String version = "1.1.0";
     public static String config = "default";
 
     public static Color VapeGuiTheme = new Color(0, 156, 161, 255);
