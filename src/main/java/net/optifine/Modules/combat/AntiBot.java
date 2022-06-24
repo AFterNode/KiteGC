@@ -23,7 +23,8 @@ public class AntiBot extends Module {
         Hypixel,
         Mineplex,
         Syuu,
-        Vanilla
+        Vanilla,
+        DoMCer
     }
     public static double getEntitySpeed(Entity entity) {
         double xDif = entity.posX - entity.prevPosX;
@@ -57,7 +58,13 @@ public class AntiBot extends Module {
                             entity.getDisplayName().getFormattedText().toLowerCase().contains("npc")){
                         return true;
                     }
-
+                } else if (mode.getValue() == antibotmode.DoMCer) {
+                    if (entity.getDisplayName().getFormattedText().startsWith("§") ||
+                            entity.getDisplayName().getFormattedText().contains("\n") ||
+                    entity.getDisplayName().getFormattedText().contains("点击开始进行游戏") ||
+                    entity.getDisplayName().getFormattedText().contains("在线人数: ")) {
+                        return true;
+                    }
                 }
             }
             return false;
