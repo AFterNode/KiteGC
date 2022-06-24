@@ -7,6 +7,7 @@ import net.optifine.Modules.ModuleType;
 import net.optifine.Modules.Module;
 import org.lwjgl.input.Keyboard;
 import net.optifine.Utils.utils.Helper;
+import scala.tools.cmd.Opt;
 
 import java.util.Random;
 
@@ -17,7 +18,7 @@ public class LTap extends Module {
     private final String[] 聪明绝顶 = new String[]{"傻逼","圣杯", "失败", "鼠标", "设备", "识别", "手表", "上班", "书包", "手臂", "顺便", "沙包", "商标", "手办", "水泵", "社保", "水杯", "手柄", "书本", "纱布", "扫把", "水杯", "烧饼"};
     private int counter = 0;
     private boolean warnAlready = false;
-
+    private Option<Boolean> HytPublic = new Option<>("HytPublic", "HytPublic", false);
 
     static String[] LMessages = {
             "我现在在这埋汰你呢小老弟",
@@ -301,8 +302,11 @@ public class LTap extends Module {
     public void keyInput(InputEvent.KeyInputEvent event) {
         if(this.state) {
             if (Keyboard.isKeyDown(KEY_P)) {
+                StringBuilder builder = new StringBuilder();
+                if (HytPublic.getValue()) builder.append("@");
                 Random r = new Random();
-                mc.thePlayer.sendChatMessage(LMessages[r.nextInt(LMessages.length)]);
+                builder.append(LMessages[r.nextInt(LMessages.length)]);
+                mc.thePlayer.sendChatMessage(builder.toString());
             }
         }
     }
