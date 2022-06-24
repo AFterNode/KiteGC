@@ -46,11 +46,11 @@ class AVThread extends Thread {
             try {
                 int value = 0;
                 for (final EntityPlayer ep: AntiVanish.mc.theWorld.playerEntities) {
-                    if (AntiBot.isServerBot(ep)) return;
+                    if (AntiBot.isServerBot(ep)) continue;
 
                     // 航服拓展
                     if (AntiVanish.server.getValue() == AntiVanish.Servers.DoMCer){
-                        if (ep.getInventory().length >= 4) return;
+                        if (ep.getInventory().length >= 4) continue;
                     }
 
                     if (ep.isInvisible()) {
