@@ -6,15 +6,12 @@ import net.optifine.Command.*;
 import net.optifine.Manager.FriendManager;
 import net.optifine.Modules.Module;
 import net.optifine.Manager.ModuleManager;
-import net.optifine.Utils.utils.AFnVerChk;
-import net.optifine.Utils.utils.Helper;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.Display;
 
 import java.awt.*;
 import java.io.IOException;
@@ -30,7 +27,7 @@ public class Client {
 
     public static String name = "Kite";
     public static String real_name = "KiteGC";
-    public static String version = "1.1.0";
+    public static String version = "1.2.0";
     public static String config = "default";
 
     public static Color VapeGuiTheme = new Color(0, 156, 161, 255);

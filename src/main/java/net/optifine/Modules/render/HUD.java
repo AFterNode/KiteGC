@@ -40,7 +40,7 @@ public class HUD extends Module {
         int y = 1;
         if (mc.currentScreen != null && !(mc.currentScreen instanceof GuiMainMenu)) return;
         if(this.WaterMark.getValue()){
-            FontManager.C22.drawStringWithShadow(Client.name,2,2, ColorUtils.rainbow(1));
+            FontManager.C22.drawStringWithShadow(Client.name + Client.version,2,2, ColorUtils.rainbow(1));
         }
         if (this.FPS.getValue()) {
             FontManager.C22.drawStringWithShadow("FPS: " + Integer.toString(Minecraft.getDebugFPS()), 2, 19, ColorUtils.rainbow(1));
