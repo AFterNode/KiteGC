@@ -1,5 +1,6 @@
 package net.optifine.Modules.render;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.optifine.Modules.ModuleType;
 import net.optifine.Utils.utils.ColorUtils;
@@ -13,6 +14,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
+import scala.tools.cmd.Opt;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -21,10 +23,12 @@ public class HUD extends Module {
     private Option<Boolean> Health = new Option<Boolean>("Health","Health", false);
     private Option<Boolean> WaterMark = new Option<Boolean>("WaterMark","WaterMark", true);
     private Option<Boolean> ArrayList = new Option<Boolean>("ArrayList","ArrayList", true);
+    private Option<Boolean> FPS = new Option<>("FPS", "FPS", false);
+
     private int width;
     public HUD() {
         super("HUD", Keyboard.KEY_H, ModuleType.Render,"Show " + Client.name + " HUD Screen");
-        this.addValues(this.Health,this.WaterMark,this.ArrayList);
+        this.addValues(this.Health,this.WaterMark,this.ArrayList, this.FPS);
         Chinese="HUD界面";
     }
 
@@ -37,6 +41,9 @@ public class HUD extends Module {
         if (mc.currentScreen != null && !(mc.currentScreen instanceof GuiMainMenu)) return;
         if(this.WaterMark.getValue()){
             FontManager.C22.drawStringWithShadow(Client.name,2,2, ColorUtils.rainbow(1));
+        }
+        if (this.FPS.getValue()) {
+            FontManager.C22.drawStringWithShadow("FPS: " + Integer.toString(Minecraft.getDebugFPS()), 2, 19, ColorUtils.rainbow(1));
         }
         ArrayList<Module> modules = new ArrayList<>();
         for (Module m : Client.instance.moduleManager.getModules()) {
