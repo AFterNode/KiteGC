@@ -1,6 +1,8 @@
 # Kite
 基于 VapuLite
 
+**此客户端即将停止支持，后续请使用：[LBounce](https://github.com/AFterNode/LBounce)**
+
 需要：Minecraft 1.8.9，Forge
 
 与VapuLite相同，完全免费(GNU GPLv3)，严禁出售
