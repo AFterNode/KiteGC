@@ -76,6 +76,9 @@ public class AutoClicker extends Module {
     @SubscribeEvent
     public void AFnKiteAC(TickEvent event) {
         if (mode.getValue() != modes.AFnKite) return;
+        if (!mc.gameSettings.keyBindAttack.isKeyDown()) {
+            return;
+        }
         ACThread thread = new ACThread(cps.getValue(), this);
         thread.start();
     }
