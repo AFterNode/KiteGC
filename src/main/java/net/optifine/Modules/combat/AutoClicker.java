@@ -31,7 +31,7 @@ public class AutoClicker extends Module {
 
     public AutoClicker() {
         super("AutoClicker", Keyboard.KEY_K, ModuleType.Combat,"auto Attack when you hold the attack button");
-        this.addValues(this.cps,this.autoblock);
+        this.addValues(this.cps,this.autoblock,this.mode);
         Chinese="连点器";
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -75,7 +75,9 @@ public class AutoClicker extends Module {
     // AFnKite版
     @SubscribeEvent
     public void AFnKiteAC(TickEvent event) {
-
+        if (mode.getValue() != modes.AFnKite) return;
+        ACThread thread = new ACThread(cps.getValue(), this);
+        thread.start();
     }
 }
 
