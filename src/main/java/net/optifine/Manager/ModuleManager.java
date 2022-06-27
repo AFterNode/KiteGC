@@ -1,5 +1,6 @@
 package net.optifine.Manager;
 
+import net.optifine.Modules.Config.*;
 import net.optifine.Modules.blatant.*;
 import net.optifine.Modules.movement.*;
 import net.optifine.Modules.message.Hitokoto;
@@ -7,10 +8,6 @@ import net.optifine.Modules.other.AntiVanish;
 import net.optifine.Modules.other.Tracers;
 import net.optifine.Modules.player.*;
 import net.optifine.Modules.ModuleType;
-import net.optifine.Modules.Config.IGN;
-import net.optifine.Modules.Config.LoadConfig;
-import net.optifine.Modules.Config.SaveConfig;
-import net.optifine.Modules.Config.Uninject;
 import net.optifine.Modules.Module;
 import net.optifine.Modules.combat.*;
 import net.optifine.Modules.other.NoCommand;
@@ -94,5 +91,6 @@ public class ModuleManager {
         Modules.add(new Hitokoto());
         Modules.add(new AutoCNM());
         Modules.add(new AntiVanish());
+        Modules.add(new Title());
     }
 }
