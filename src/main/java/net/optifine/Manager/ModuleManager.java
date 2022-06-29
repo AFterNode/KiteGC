@@ -91,6 +91,5 @@ public class ModuleManager {
         Modules.add(new Hitokoto());
         Modules.add(new AutoCNM());
         Modules.add(new AntiVanish());
-        Modules.add(new Title());
     }
 }
