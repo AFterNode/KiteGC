@@ -1,12 +1,14 @@
 package net.optifine.Gui.MusicPlayerGUI;
 
+import net.minecraftforge.event.world.NoteBlockEvent;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
 public class MainGUI extends JFrame {
     JPanel mainPanel;
-    File current;
+    File[] current;
     public MPUtils player;
 
     public MainGUI() {
@@ -22,15 +24,15 @@ public class MainGUI extends JFrame {
         JButton selectFile = new JButton("选择文件");
         selectFile.addActionListener(e -> {
             FileSelectorUI fileSelectorUI = new FileSelectorUI(this);
-            current = new File(fileSelectorUI.getDirectory() + fileSelectorUI.getFile());
+            current = fileSelectorUI.getFiles();
         });
         mainPanel.add(selectFile);
 
         JButton play = new JButton("开始/停止");
         play.addActionListener(e -> {
             if (current == null) return;
-            if (player != null) {
-                player.stop();
+            if (player != null && player.status == MPStatus.Playing) {
+                player.stopPlay();
                 player = null;
                 return;
             }

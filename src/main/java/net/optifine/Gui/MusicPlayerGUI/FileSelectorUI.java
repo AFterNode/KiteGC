@@ -7,5 +7,8 @@ public class FileSelectorUI extends FileDialog {
     public FileSelectorUI(JFrame parent) {
         super(parent, "选择文件");
         setVisible(true);
+        setMultipleMode(true);
+        setAlwaysOnTop(true);
+        setDirectory("%HOMEPATH%\\Music");
     }
 }
